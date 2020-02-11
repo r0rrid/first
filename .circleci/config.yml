@@ -10,7 +10,7 @@ jobs:
                         - checkout
                         - run: javac -cp /opt/selenium/selenium-server-standalone.jar clickmeTest.java
                         - run: |
-                                #                                sudo cp default.conf /etc/nginx/conf.d
+                                sudo cp default.conf /etc/nginx/conf.d
                                 sudo cp index.html /usr/share/nginx/html
                                 sudo nginx
                         - run: java -cp .:/opt/selenium/selenium-server-standalone.jar clickmeTest
