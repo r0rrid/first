@@ -4,9 +4,9 @@ jobs:
                 docker:
                         - image: selenium/standalone-chrome
                 steps:
-                        - run: sudo apt update
-                        - run: sudo apt install default-jdk
-                        - run: sudo apt install nginx
+                        - run: sudo apt-get update -qqy
+                        - run: sudo apt-get -qqy install default-jdk 
+                        - run: sudo apt-get -qqy install nginx
                         - checkout
                         - run: javac -cp /opt/selenium/selenium-server-standalone.jar clickmeTest.java
                         - run: |
