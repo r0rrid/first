@@ -1,12 +1,16 @@
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class clickmeTest {
 
 public static void main(String[] args) {
 
 System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
+
+ChromeOptions options = new ChromeOptions();
+options.addArguments("headless");
 
 WebDriver driver = new ChromeDriver();
 
