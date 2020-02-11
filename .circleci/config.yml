@@ -4,7 +4,7 @@ version: 2.1
     jobs:
             build:
                     docker:
-                            - SeleniumHQ/docker-selenium/tree/master/StandaloneChrome
+                            - image: SeleniumHQ/docker-selenium/tree/master/StandaloneChrome
 
 
                     steps:
