@@ -10,13 +10,15 @@ public static void main(String[] args) {
 System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
 
 ChromeOptions options = new ChromeOptions();
-options.addArguments("headless");
+options.addArguments("--headless");
+options.addArguments("--no-sandbox");
+options.addArguments("--disable-dev-shm-usage");
 
-WebDriver driver = new ChromeDriver();
+WebDriver driver = new ChromeDriver(options);
 
 //String baseUrl = "http://192.168.0.3";
 
-driver.get("http://192.168.0.3");
+driver.get("http://localhost");
 //System.out.println(driver.getPageSource());
 driver.findElement(By.id("clickme")).click();
 
