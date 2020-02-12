@@ -1,17 +1,31 @@
+# This circleci configuration file is designed to use a selenium docker image to test a 
+# very basic (button click) web app
 version: 2.1
 jobs:
         build:
                 docker:
+                        # Use the Selenium/chrome image on dockerhub
                         - image: selenium/standalone-chrome
                 steps:
+                        # Install Java sdk to compile test script
                         - run: sudo apt-get update -qqy
                         - run: sudo apt-get -qqy install default-jdk 
+
+                        # Install nginx to serve app
                         - run: sudo apt-get -qqy install nginx
+
+                        # Pull code from Github
                         - checkout
+
+                        # Compile the java script that will be used to perform the unit test
                         - run: javac -cp /opt/selenium/selenium-server-standalone.jar clickmeTest.java
+                          
+                        # Configure nginx to load clickme test
                         - run: |
                                 sudo cp default.conf /etc/nginx/conf.d
                                 sudo cp index.html /usr/share/nginx/html
                                 sudo nginx
+
+                        # Execute unit test
                         - run: java -cp .:/opt/selenium/selenium-server-standalone.jar clickmeTest
 
